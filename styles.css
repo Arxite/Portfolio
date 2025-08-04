@@ -1,0 +1,86 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: black;
+  font-family: arial;
+}
+a,h1,h2,h3 {
+  text-decoration: none;
+  color: #bfbfbf;
+}
+a:hover {
+  text-decoration: underline;
+  color: #737373;
+}
+a:active {
+  color: #3b3b3b;
+}
+
+.sidebar {
+  display: block;
+  position: fixed;
+  height: 100%;
+  width: 300px;
+  background-color: black;
+}
+.sidebar a,h1,h2,h3 {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+.topbar {
+  display: none;
+}
+
+.main {
+  position: static;
+  height: 10000px;
+  width: 100%;
+  margin-left: 300px;
+}
+
+@media only screen and (max-width: 850px) {
+  .sidebar {
+    visibility: hidden;
+    width: 100%;
+  }
+  .topbar {
+    display: flex;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    background-color: black;
+  }
+  .topbar h1,h2,h3 {
+    margin: 33px;
+  }
+  .topbar label {
+    font-size: 47px;
+    float: right;
+    padding: 14px;
+    padding-right: 20px;
+    color: #bfbfbf;
+  }
+  .topbar label:hover {
+    color: #737373;
+  }
+  .topbar label:active {
+    color: #3b3b3b;
+  }
+  .topnav-l {
+    width: 90%;
+  }
+  .topnav-r {
+    float: right;
+    width: 10%;
+    min-width: 60px;
+  }
+  .main {
+    margin-left: 0px;
+    padding-top: 100px;
+  }
+}
+#myNav:checked ~ .sidebar {
+  visibility: visible;
+}
