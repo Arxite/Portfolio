@@ -1,3 +1,4 @@
+/* Global attributes */
 * {
   padding: 0;
   margin: 0;
@@ -5,10 +6,16 @@
 body {
   background-color: black;
   font-family: arial;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Safari */
+  -khtml-user-select: none;    /* Konqueror HTML */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Standard syntax */
 }
-a,h1,h2,h3 {
+p,a,h1,h2,h3 {
   text-decoration: none;
-  color: #bfbfbf;
+  color: white;
 }
 a:hover {
   text-decoration: underline;
@@ -18,6 +25,7 @@ a:active {
   color: #3b3b3b;
 }
 
+/* Desktop Navigation Sidebar */
 .sidebar {
   display: block;
   position: fixed;
@@ -29,10 +37,13 @@ a:active {
   margin-left: 50px;
   margin-top: 50px;
 }
+
+/* Mobile Navigation Bar */
 .topbar {
   display: none;
 }
 
+/* Page contents */
 .main {
   position: static;
   height: 10000px;
@@ -40,27 +51,40 @@ a:active {
   margin-left: 300px;
 }
 
+/* Relative Attributes */
+.centreY {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Mobile Attributes */
 @media only screen and (max-width: 940px) {
+  /* Hides Navigation Menu */
   .sidebar {
     visibility: hidden;
     width: 100%;
   }
+  
+  /* Mobile Navigation Bar */
   .topbar {
     display: flex;
     position: fixed;
-    height: 100px;
+    height: 8%;
     width: 100%;
     background-color: black;
   }
-  .topbar h1,h2,h3 {
-    margin: 33px;
+  .topbar p {
+    font-size: 20px;
+    color: white;
+    padding-left: 20px;
   }
   .topbar label {
-    font-size: 47px;
+    font-size: 35px;
     float: right;
-    padding: 12px;
-    padding-right: 20px;
-    color: #bfbfbf;
+    margin-right: 20px;
+    color: white;
+    cursor: pointer;
   }
   .topbar label:hover {
     color: #737373;
@@ -76,11 +100,20 @@ a:active {
     width: 10%;
     min-width: 60px;
   }
+
+  /* Page Contents */
   .main {
     margin-left: 0px;
     padding-top: 100px;
   }
+
+  /* Relative Attributes */
+  .mobile-hide {
+    visibility: hidden;
+  }
 }
+
+/* Navigation Checkbox Attributes */
 #myNav:checked ~ .sidebar {
   visibility: visible;
 }
