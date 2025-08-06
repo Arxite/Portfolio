@@ -13,16 +13,25 @@ body {
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Standard syntax */
 }
-p,a,h1,h2,h3 {
+p,a,h1,h2,h3,span {
   text-decoration: none;
   color: white;
 }
-a:hover {
-  text-decoration: underline;
-  color: #737373;
+/* Text Attributes */
+.a {
+  cursor: pointer;
 }
-a:active {
-  color: #3b3b3b;
+/* .a:hover {
+  text-decoration: underline;
+  color: white;
+} */
+.a:active {
+  color: grey;
+}
+.aactive {
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Desktop Navigation Sidebar */
@@ -33,9 +42,26 @@ a:active {
   width: 300px;
   background-color: black;
 }
-.sidebar a,h1,h2,h3 {
+.sidebar-logo {
   margin-left: 50px;
   margin-top: 50px;
+}
+.sidebar-nav {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+.sidebar a,span {
+  line-height: 1.85;
+}
+.sidebar-tray-icon {
+  margin-left: 10px;
+  display: inline-block;
+  transform: scale(1.3, 1.3) rotate(0deg);
+}
+.sidebar-tray {
+  display: none;
+  margin-left: 45px;
+  width: 100%;
 }
 
 /* Mobile Navigation Bar */
@@ -65,7 +91,14 @@ a:active {
     visibility: hidden;
     width: 100%;
   }
-  
+  /* Mobile Navigation Meny Attributes */
+  .sidebar-nav {
+    margin-left: 75px;
+    margin-top: 30px;
+  }
+  .sidebar a,span {
+    line-height: 2.5;
+  }
   /* Mobile Navigation Bar */
   .topbar {
     display: flex;
@@ -87,10 +120,10 @@ a:active {
     cursor: pointer;
   }
   .topbar label:hover {
-    color: #737373;
+    color: white;
   }
   .topbar label:active {
-    color: #3b3b3b;
+    color: #737373;
   }
   .topnav-l {
     width: 90%;
@@ -100,13 +133,11 @@ a:active {
     width: 10%;
     min-width: 60px;
   }
-
   /* Page Contents */
   .main {
     margin-left: 0px;
     padding-top: 100px;
   }
-
   /* Relative Attributes */
   .mobile-hide {
     visibility: hidden;
@@ -116,4 +147,11 @@ a:active {
 /* Navigation Checkbox Attributes */
 #myNav:checked ~ .sidebar {
   visibility: visible;
+}
+/* myWork Checkbox Attributes */
+#myWork:checked ~ .sidebar-tray {
+  display: inline;
+}
+#myWork:checked ~ .sidebar-tray-icon {
+  transform: scale(1.5, 1.5) rotate(-45deg);
 }

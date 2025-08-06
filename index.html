@@ -13,10 +13,20 @@
 <!-- Sidebar/menu -->
 <input type="checkbox" id="myNav" style="display: none;">
 <nav class="sidebar">
-  <h2 class="mobile-hide">JONAS<br>BRSKG</h2><br>
-  <a href="#">home</a><br>
-  <a href="#">about</a><br>
-  <a href="#">contact</a><br>
+  <h2 class="sidebar-logo mobile-hide">JONAS<br>BRSKG</h2><br>
+  <div class="sidebar-nav">
+  <a tabindex="2" href="#" class="aactive">home</a><br>
+    <input type="checkbox" id="myWork" style="display: none">
+    <label for="myWork">
+    <span tabindex="3" class="a">featured_work</span>
+    </label>
+    <span class="sidebar-tray-icon">+</span><br>
+      <a tabindex="4" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
+      <a tabindex="5" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
+      <a tabindex="6" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
+  <a tabindex="7" href="#" class="a">about</a><br>
+  <a tabindex="8" href="#" class="a">contact</a><br>
+  </div>
 </nav>
 
 <!-- Topnavbar for smaller devices -->
@@ -28,7 +38,7 @@
     </div>
   </div>
   <div class="topnav-r">
-    <label class="centreY" for="myNav">&#9776;</label>
+    <label tabindex="1" class="centreY" for="myNav">&#9776;</label>
   </div>
 </header>
 
