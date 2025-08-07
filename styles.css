@@ -16,6 +16,7 @@ body {
 p,a,h1,h2,h3,span {
   text-decoration: none;
   color: white;
+  font-size: 1em;
 }
 /* Text Attributes */
 .a {
@@ -45,6 +46,7 @@ p,a,h1,h2,h3,span {
 .sidebar-logo {
   margin-left: 50px;
   margin-top: 50px;
+  font-size: 1.8em;
 }
 .sidebar-nav {
   margin-left: 50px;
