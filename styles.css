@@ -12,6 +12,7 @@ body {
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Standard syntax */
+  animation: fade-in 0.5s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
 }
 p,a,h1,h2,h3,span {
   text-decoration: none;
@@ -22,10 +23,6 @@ p,a,h1,h2,h3,span {
 .a {
   cursor: pointer;
 }
-/* .a:hover {
-  text-decoration: underline;
-  color: white;
-} */
 .a:active {
   color: grey;
 }
@@ -40,7 +37,7 @@ p,a,h1,h2,h3,span {
   display: block;
   position: fixed;
   height: 100%;
-  width: 300px;
+  width: 280px;
   background-color: black;
 }
 .sidebar-logo {
@@ -75,15 +72,37 @@ p,a,h1,h2,h3,span {
 .main {
   position: static;
   height: 10000px;
-  width: 100%;
-  margin-left: 300px;
+  width: calc(100% - 280px);
+  margin-left: 280px;
 }
 
+/* Image Gallary */
+.gallery {
+  columns: 500px;
+  grid-column-gap: 5px;
+  padding: 5px;
+}
+.image {
+  height: auto;
+  width: 100%;
+  pointer-events: none;
+  margin-bottom: 2px;
+  animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
+}
 /* Relative Attributes */
 .centreY {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+/* Animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0; /* Start completely transparent */
+  }
+  100% {
+    opacity: 1; /* End completely opaque */
+  }
 }
 
 /* Mobile Attributes */
@@ -92,6 +111,7 @@ p,a,h1,h2,h3,span {
   .sidebar {
     visibility: hidden;
     width: 100%;
+    z-index: 9999;
   }
   /* Mobile Navigation Meny Attributes */
   .sidebar-nav {
@@ -108,6 +128,7 @@ p,a,h1,h2,h3,span {
     height: 8%;
     width: 100%;
     background-color: black;
+    z-index: 9999;
   }
   .topbar p {
     font-size: 20px;
@@ -139,7 +160,10 @@ p,a,h1,h2,h3,span {
   .main {
     margin-left: 0px;
     padding-top: 100px;
+    width: 100%;
   }
+  /* Image Gallary */
+
   /* Relative Attributes */
   .mobile-hide {
     visibility: hidden;
