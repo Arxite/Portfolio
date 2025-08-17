@@ -6,18 +6,18 @@
 body {
   background-color: black;
   font-family: arial;
-  animation: fade-in 0.5s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
-}
-p,a,h1,h2,h3,span {
-  text-decoration: none;
-  color: white;
-  font-size: 1em;
+  animation: fade-in 0.5s forwards;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Safari */
   -khtml-user-select: none;    /* Konqueror HTML */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Standard syntax */
+}
+p,a,h1,h2,h3,span {
+  text-decoration: none;
+  color: white;
+  font-size: 1em;
 }
 /* Text Attributes */
 .a {
@@ -120,7 +120,14 @@ p,a,h1,h2,h3,span {
   width: 100%;
   pointer-events: none;
   margin-bottom: 2px;
+  transition: transform 0.5s ease-in-out;
   animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Safari */
+  -khtml-user-select: none;    /* Konqueror HTML */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Standard syntax */
 }
 /* Relative Attributes */
 .centreY {
@@ -212,7 +219,9 @@ p,a,h1,h2,h3,span {
     width: 80%;
   }
   /* Image Gallary */
-
+  .gallery {
+    columns: 230px;
+  }
   /* Relative Attributes */
   .mobile-hide {
     visibility: hidden;
