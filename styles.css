@@ -88,6 +88,7 @@ p,a,h1,h2,h3,span {
   pointer-events: none;
   margin-bottom: 2px;
   animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
+  background-color: black;
 }
 /* Relative Attributes */
 .centreY {
@@ -181,3 +182,4 @@ p,a,h1,h2,h3,span {
 #myWork:checked ~ .sidebar-tray-icon {
   transform: scale(1.5, 1.5) rotate(-45deg);
 }
+
