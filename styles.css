@@ -41,12 +41,12 @@ p,a,h1,h2,h3,span {
   background-color: black;
 }
 .sidebar-logo {
-  margin-left: 50px;
+  margin-left: 55px;
   margin-top: 50px;
   font-size: 1.8em;
 }
 .sidebar-nav {
-  margin-left: 50px;
+  margin-left: 55px;
   margin-top: 50px;
 }
 .sidebar a,span {
@@ -86,6 +86,7 @@ p,a,h1,h2,h3,span {
 .mainText {
   margin-top: 300px;
   width: 600px;
+  padding-left: 10px;
 }
 .mainText h2 {
   font-size: 1.8em;
@@ -95,6 +96,10 @@ p,a,h1,h2,h3,span {
   font-size: 1.4em;
   padding-bottom: 30px;
 }
+.mainText div {
+  height: 100px;
+}
+
 .email {
   text-decoration: underline;
   user-select: all;
@@ -105,10 +110,6 @@ p,a,h1,h2,h3,span {
   padding: 5px;
 
 }
-.mainText div {
-  height: 100px;
-}
-
 /* Image Gallary */
 .gallery {
   columns: 500px;
@@ -150,8 +151,13 @@ p,a,h1,h2,h3,span {
   }
 }
 
-/* Mobile Attributes */
-@media only screen and (max-width: 940px) {
+/* Smaller Window Attributes */
+@media only screen and (max-width: 1580px) {
+  .gallery {
+    columns: 320px;
+  }
+}
+@media only screen and (max-width: 949px) {
   /* Hides Navigation Menu */
   .sidebar {
     visibility: hidden;
@@ -177,7 +183,7 @@ p,a,h1,h2,h3,span {
   .topbar {
     display: flex;
     position: fixed;
-    height: 8%;
+    height: 55px;
     width: 100%;
     background-color: black;
     z-index: 9999;
@@ -211,16 +217,17 @@ p,a,h1,h2,h3,span {
   /* Page Contents */
   .main {
     margin-left: 0px;
-    padding-top: 100px;
+    padding-top: 55px;
     width: 100%;
   }
   .mainText {
-    margin-top: 300px;
+    margin-top: 30vh;
     width: 80%;
   }
   /* Image Gallary */
   .gallery {
     columns: 230px;
+    padding-top: 0px;
   }
   /* Relative Attributes */
   .mobile-hide {
