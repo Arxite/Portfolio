@@ -22,6 +22,10 @@ p,a,h1,h2,h3,span {
 /* Text Attributes */
 .a {
   cursor: pointer;
+  transition: color 0.15s ease;
+}
+.a:hover {
+  color: grey;
 }
 .a:active {
   color: grey;
@@ -121,14 +125,18 @@ p,a,h1,h2,h3,span {
   width: 100%;
   pointer-events: none;
   margin-bottom: 2px;
+  opacity: 0;
   transition: transform 0.5s ease-in-out;
-  animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Safari */
   -khtml-user-select: none;    /* Konqueror HTML */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Standard syntax */
+}
+.image.loaded {
+  opacity: 1;
+  animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
 }
 /* Relative Attributes */
 .centreY {
