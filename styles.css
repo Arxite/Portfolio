@@ -26,6 +26,7 @@ p,a,h1,h2,h3,span {
 }
 .a:hover {
   color: grey;
+  transition: color 0.15s ease;
 }
 .a:active {
   color: grey;
@@ -52,6 +53,7 @@ p,a,h1,h2,h3,span {
 .sidebar-nav {
   margin-left: 55px;
   margin-top: 50px;
+  position: absolute;
 }
 .sidebar a,span {
   line-height: 1.85;
@@ -86,6 +88,7 @@ p,a,h1,h2,h3,span {
   height: 10000px;
   width: calc(100% - 280px);
   margin-left: 280px;
+  opacity: 1;
 }
 .mainText {
   margin-top: 300px;
@@ -125,6 +128,7 @@ p,a,h1,h2,h3,span {
   width: 100%;
   pointer-events: none;
   margin-bottom: 2px;
+  animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
   transition: transform 0.5s ease-in-out;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Safari */
@@ -161,16 +165,24 @@ p,a,h1,h2,h3,span {
   }
 }
 @media only screen and (max-width: 949px) {
+  .gallery {
+    columns: 320px;
+  }
+}
+@media only screen and (max-width: 949px) {
   /* Hides Navigation Menu */
   .sidebar {
-    visibility: hidden;
-    width: 100%;
+    transition: left 0.2s ease;
+    width: 80%;
     z-index: 9999;
+    left: 100%;
+
   }
   /* Mobile Navigation Meny Attributes */
   .sidebar-nav {
-    margin-left: 75px;
-    margin-top: 30px;
+    margin-left: 55px;
+    top: 20%;
+    position: absolute;
   }
   .sidebar a,span {
     line-height: 2.5;
@@ -194,17 +206,18 @@ p,a,h1,h2,h3,span {
   .topbar p {
     font-size: 20px;
     color: white;
-    padding-left: 20px;
+    padding-left: 6px;
   }
   .topbar label {
+    top: 20px;
     font-size: 35px;
     float: right;
-    margin-right: 20px;
     color: white;
     cursor: pointer;
+    margin-right: 6px;
   }
   .topbar label:hover {
-    color: white;
+    color: grey;
   }
   .topbar label:active {
     color: #737373;
@@ -222,6 +235,7 @@ p,a,h1,h2,h3,span {
     margin-left: 0px;
     padding-top: 55px;
     width: 100%;
+    transition: opacity 0.2s linear;
   }
   .mainText {
     margin-top: 30vh;
@@ -229,24 +243,25 @@ p,a,h1,h2,h3,span {
   }
   /* Image Gallary */
   .gallery {
-    columns: 230px;
+    columns: 150px;
     padding-top: 0px;
   }
   /* Relative Attributes */
   .mobile-hide {
     visibility: hidden;
   }
+  /* Navigation Checkbox Attributes */
+  #myNav:checked ~ .sidebar {
+    left: 20%;
+  }
+  #myNav:checked ~ .main {
+    opacity: 0.7;
+  }
+  /* myWork Checkbox Attributes */
+  #myWork:checked ~ .sidebar-tray {
+    display: inline;
+  }
+  #myWork:checked ~ .sidebar-tray-icon {
+    transform: scale(1.5, 1.5) rotate(-45deg);
+  }
 }
-
-/* Navigation Checkbox Attributes */
-#myNav:checked ~ .sidebar {
-  visibility: visible;
-}
-/* myWork Checkbox Attributes */
-#myWork:checked ~ .sidebar-tray {
-  display: inline;
-}
-#myWork:checked ~ .sidebar-tray-icon {
-  transform: scale(1.5, 1.5) rotate(-45deg);
-}
-
