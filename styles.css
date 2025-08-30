@@ -161,12 +161,7 @@ p,a,h1,h2,h3,span {
 /* Smaller Window Attributes */
 @media only screen and (max-width: 1580px) {
   .gallery {
-    columns: 320px;
-  }
-}
-@media only screen and (max-width: 949px) {
-  .gallery {
-    columns: 320px;
+    columns: 300px;
   }
 }
 @media only screen and (max-width: 949px) {
@@ -243,7 +238,7 @@ p,a,h1,h2,h3,span {
   }
   /* Image Gallary */
   .gallery {
-    columns: 150px;
+    columns: 240px;
     padding-top: 0px;
   }
   /* Relative Attributes */
@@ -263,5 +258,20 @@ p,a,h1,h2,h3,span {
   }
   #myWork:checked ~ .sidebar-tray-icon {
     transform: scale(1.5, 1.5) rotate(-45deg);
+  }
+}
+@media only screen and (max-width: 616px) {
+  .gallery {
+    columns: 200px;
+  }
+}
+@media only screen and (max-width: 418px) {
+  .gallery {
+    columns: 150px;
+  }
+}
+@media only screen and (max-width: 318px) {
+  .gallery {
+    columns: 100px;
   }
 }
