@@ -85,7 +85,6 @@ p,a,h1,h2,h3,span {
 /* Page contents */
 .main {
   position: static;
-  height: 10000px;
   width: calc(100% - 280px);
   margin-left: 280px;
   opacity: 1;
@@ -224,6 +223,10 @@ p,a,h1,h2,h3,span {
     float: right;
     width: 10%;
     min-width: 60px;
+  }
+  .topnav-r label {
+    padding-top: 2px;
+    padding-right: 5px;
   }
   /* Page Contents */
   .main {
