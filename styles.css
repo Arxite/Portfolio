@@ -13,6 +13,7 @@ body {
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Standard syntax */
+  background-color: black;
 }
 p,a,h1,h2,h3,span {
   text-decoration: none;
@@ -85,10 +86,18 @@ p,a,h1,h2,h3,span {
 /* Page contents */
 .main {
   position: static;
-  height: 10000px;
   width: calc(100% - 280px);
   margin-left: 280px;
   opacity: 1;
+  height: 100%;
+  min-height: 100vh;
+}
+.mainVideo {
+  margin-top: 40vh;
+  margin-left: 10px;
+  padding-left: 10px;
+  width: 1200px;
+  height: 675px;
 }
 .mainText {
   margin-top: 300px;
@@ -225,6 +234,10 @@ p,a,h1,h2,h3,span {
     width: 10%;
     min-width: 60px;
   }
+  .topnav-r label {
+    padding-top: 2px;
+    padding-right: 5px;
+  }
   /* Page Contents */
   .main {
     margin-left: 0px;
@@ -258,6 +271,26 @@ p,a,h1,h2,h3,span {
   }
   #myWork:checked ~ .sidebar-tray-icon {
     transform: scale(1.5, 1.5) rotate(-45deg);
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .mainVideo {
+    width: 800px;
+    height: 450px;
+    margin-left: 70px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .mainVideo {
+    width: 700px;
+    height: 394px;
+    margin-left: 70px;
+  }
+}
+@media only screen and (max-width: 949px) {
+  .mainVideo {
+    width: 90%;
+    margin-left: 0px;
   }
 }
 @media only screen and (max-width: 616px) {
