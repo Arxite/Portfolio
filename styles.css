@@ -86,8 +86,10 @@ p,a,h1,h2,h3,span {
 .main {
   position: static;
   width: calc(100% - 280px);
+  height: 100vh;
   margin-left: 280px;
   opacity: 1;
+  background-color: black;
 }
 .mainText {
   margin-top: 300px;
