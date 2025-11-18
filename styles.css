@@ -271,6 +271,7 @@ height: 400px;
   .main {
     margin-left: 0px;
     width: 100%;
+    margin-top: 55px;
     transition: opacity 0.2s linear;
 
   }
@@ -378,3 +379,4 @@ height: 400px;
     columns: 100px;
   }
 }
+
