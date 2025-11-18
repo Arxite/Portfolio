@@ -91,6 +91,13 @@ p,a,h1,h2,h3,span {
   opacity: 1;
   height: 100%;
   min-height: 100vh;
+  display: inline-block;
+  text-align: center;
+}
+.mainContainer {
+  max-width: 1400px;
+  display: inline-block;
+  text-align: center;
 }
 .mainVideo {
   margin-top: 40vh;
@@ -99,10 +106,26 @@ p,a,h1,h2,h3,span {
   width: 1200px;
   height: 675px;
 }
-.mainText {
-  margin-top: 300px;
-  width: 600px;
+.mainDiv {
+  width: 100%;
   padding-left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+.mainDivLeft {
+  width: 50%;
+  float: left;
+  display: inline-block;
+  text-align: left;
+}
+.mainDivRight {
+  width: 48%;
+  float: right;
+  display: inline-block;
+  text-align: left;
+}
+.mainSpacerTop {
+  height: 200px;
 }
 .mainText h2 {
   font-size: 1.8em;
@@ -112,8 +135,14 @@ p,a,h1,h2,h3,span {
   font-size: 1.4em;
   padding-bottom: 30px;
 }
-.mainText div {
-  height: 100px;
+.mainTextImage {
+height: 400px;
+}
+.mainSpacer {
+  height: 200px;
+}
+.mainSpacerMobile {
+  height: 0px;
 }
 
 .email {
@@ -241,13 +270,37 @@ p,a,h1,h2,h3,span {
   /* Page Contents */
   .main {
     margin-left: 0px;
-    padding-top: 55px;
     width: 100%;
     transition: opacity 0.2s linear;
+
   }
-  .mainText {
-    margin-top: 30vh;
-    width: 80%;
+  .mainContainer {
+    max-width: 2000px;
+  }
+  .mainDiv {
+    margin: 5%;
+    width: 95%;
+  }
+  .mainDivLeft {
+    margin: 5%;
+    width: 95%;
+    height: auto;
+}
+  .mainDivRight {
+    margin: 5%;
+    width: 95%;
+  }
+  .mainTextImage {
+    text-align: center;
+  }
+  .mainSpacerMobile {
+    height: 0px;
+  }
+  .mainSpacerTop {
+    height: 10vh;
+  }
+  .mainSpacerMobile {
+    height: 150px;
   }
   /* Image Gallary */
   .gallery {
@@ -285,6 +338,23 @@ p,a,h1,h2,h3,span {
     width: 700px;
     height: 394px;
     margin-left: 70px;
+  }
+  .mainDiv {
+    margin-right: 10%;
+    width: 90%;
+  }
+  .mainDivLeft {
+    margin-right: 10%;
+    width: 90%;
+    height: auto;
+}
+  .mainDivRight {
+    margin: 7%;
+    width: 93%;
+    text-align: center;
+  }
+  .mainSpacerTop {
+    height: 10vh;
   }
 }
 @media only screen and (max-width: 949px) {
