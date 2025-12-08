@@ -164,10 +164,12 @@ height: 400px;
 .image {
   height: auto;
   width: 100%;
-  pointer-events: none;
+  pointer-events: pointer;
+  cursor: pointer;
   margin-bottom: 2px;
   animation: fade-in 1s forwards; /* Apply the 'fade-in' animation for 1 second, staying at the end state */
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s;
+  transform: scale(1);
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Safari */
   -khtml-user-select: none;    /* Konqueror HTML */
@@ -175,6 +177,39 @@ height: 400px;
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Standard syntax */
 }
+.image:hover {
+  transform: scale(0.99);
+}
+#FullImageView {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.09s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: red;
+  background-color: rgba(0, 0, 0, 0.9);;
+  align-items: center;
+  justify-content: center;
+}
+#FullImageView.is-visible {
+  opacity: 1;
+}
+#FullImage {
+  max-height: 95%;
+  max-width: 95%;
+}
+#FullImageClose {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+}
+#FullImageClose {}
 /* Relative Attributes */
 .centreY {
   position: relative;
@@ -308,6 +343,10 @@ height: 400px;
     columns: 240px;
     padding-top: 0px;
   }
+  #FullImageView {
+    top: 55px;
+    height: calc(100vh - 55px);
+  }
   /* Relative Attributes */
   .mobile-hide {
     visibility: hidden;
@@ -379,4 +418,3 @@ height: 400px;
     columns: 100px;
   }
 }
-

@@ -51,17 +51,61 @@
   <!-- Page contents -->
     <div class="main">
       <div class="gallery">
-        <div><image loading="lazy" src="indexportfolio/final_tam_1.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/treasure_maddi.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/treasure_tam.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/kav_2.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/final_tam_2.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/tam_2.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/bread.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/voss.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/tam_1.jpg" class="image"></div>
-        <div><image loading="lazy" src="indexportfolio/kav_1.jpg" class="image"></div>
+        <image loading="lazy" src="indexportfolio/final_tam_1.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/treasure_maddi.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/treasure_tam.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/kav_2.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/final_tam_2.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/tam_2.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/bread.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/voss.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/tam_1.jpg" class="image" onclick="FullView(this.src)">
+        <image loading="lazy" src="indexportfolio/kav_1.jpg" class="image" onclick="FullView(this.src)">
       </div>
+
+
+      <div id="FullImageView" onclick="CloseFullView()">
+        <image id="FullImage">
+      </div>
+
+      <script type="text/javascript">
+        function FullView(ImgLink) {
+          const fullView = document.getElementById("FullImageView");
+
+          // 1. Make the element block-level so CSS transitions can affect it
+          fullView.style.display = "flex";
+
+          // 2. Set the image source
+          document.getElementById("FullImage").src = ImgLink;
+
+          // 3. Force the browser to recognize the display change *before* adding the class
+          //    This is necessary for the fade-in transition to work correctly
+          getComputedStyle(fullView).opacity;
+
+          // 4. Add the class to start the quick fade-in
+          fullView.classList.add("is-visible");
+        }
+
+        function CloseFullView() {
+          const fullView = document.getElementById("FullImageView");
+
+          // 1. Start the quick fade-out by removing the 'is-visible' class
+          fullView.classList.remove("is-visible");
+
+          // 2. Wait for the transition to finish before setting display: none
+          fullView.addEventListener('transitionend', function handler(event) {
+            if (event.propertyName === 'opacity' && window.getComputedStyle(fullView).opacity == 0) {
+              // 3. Set display to none only AFTER the fade is complete
+              fullView.style.display = "none";
+
+              // 4. Clean up the event listener
+              fullView.removeEventListener('transitionend', handler);
+            }
+          });
+        }
+      </script>
+
+
     </div>
   </body>
 </html>
