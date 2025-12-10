@@ -115,7 +115,7 @@ p,a,h1,h2,h3,span {
 .mainDivLeft {
   width: 50%;
   float: left;
-  display: inline-block;
+  display: block;
   text-align: left;
 }
 .mainDivRight {
@@ -257,7 +257,6 @@ height: 400px;
   .mainDivLeft {
     margin-right: 10%;
     width: 90%;
-    height: auto;
 }
   .mainDivRight {
     margin: 7%;
@@ -350,7 +349,6 @@ height: 400px;
   .mainDivLeft {
     margin: 5%;
     width: 95%;
-    height: auto;
 }
   .mainDivRight {
     margin: 5%;
