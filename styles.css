@@ -348,8 +348,9 @@ height: 400px;
     width: 95%;
   }
   .mainDivLeft {
-    margin: 5%;
-    width: 95%;
+    margin-left: 5%;
+    margin-right: 4%;
+    width: 91%;
 }
   .mainDivRight {
     margin: 5%;
@@ -358,14 +359,11 @@ height: 400px;
   .mainTextImage {
     text-align: center;
   }
-  .mainSpacerMobile {
-    height: 0px;
-  }
   .mainSpacerTop {
     height: 10vh;
   }
   .mainSpacerMobile {
-    height: 150px;
+    height: 200px;
   }
   /* Image Gallary */
   .gallery {
