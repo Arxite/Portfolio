@@ -267,11 +267,6 @@ height: 400px;
   .mainSpacerTop {
     height: 5vh;
   }
-  .mainTextImage {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-  }
 }
 @media only screen and (max-width: 949px) {
   /* Hides Navigation Menu */
@@ -411,6 +406,12 @@ height: 400px;
     margin: 0%;
     width: 100%;
     text-align: center;
+  }
+  .mainTextImage {
+    height: auto;
+    max-width: 95%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
   }
 }
 @media only screen and (max-width: 616px) {
