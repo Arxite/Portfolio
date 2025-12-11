@@ -108,7 +108,6 @@ p,a,h1,h2,h3,span {
 }
 .mainDiv {
   width: 100%;
-  padding-left: 10px;
   display: inline-block;
   text-align: left;
 }
@@ -124,13 +123,9 @@ p,a,h1,h2,h3,span {
   display: inline-block;
   text-align: left;
 }
-.mainSpacerTop {
-  height: 200px;
-}
 .mainText h2 {
   font-size: 1.8em;
   padding-bottom: 30px;
-
 }
 .mainText h3 {
   font-size: 1.4em;
@@ -142,8 +137,8 @@ height: 400px;
 .mainSpacer {
   height: 200px;
 }
-.mainSpacerMobile {
-  height: 0px;
+.mainSpacerTop {
+  height: 20vh;
 }
 
 .email {
@@ -264,9 +259,6 @@ height: 400px;
     width: 93%;
     text-align: center;
   }
-  .mainSpacerTop {
-    height: 5vh;
-  }
 }
 @media only screen and (max-width: 949px) {
   /* Hides Navigation Menu */
@@ -359,12 +351,6 @@ height: 400px;
   .mainTextImage {
     text-align: center;
   }
-  .mainSpacerTop {
-    height: 10vh;
-  }
-  .mainSpacerMobile {
-    height: 200px;
-  }
   /* Image Gallary */
   .gallery {
     columns: 240px;
@@ -396,9 +382,6 @@ height: 400px;
     width: 90%;
     margin-left: 0px;
   }
-  .mainSpacerTop {
-    height: 0vh;
-  }
   .mainDivRight {
     margin: 0%;
     width: 100%;
@@ -406,9 +389,12 @@ height: 400px;
   }
   .mainTextImage {
     height: auto;
-    max-width: 95%;
-    margin-right: 2.5%;
-    margin-left: 2.5%;
+    max-width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  .mainSpacerTop {
+    height: 10vh;
   }
 }
 @media only screen and (max-width: 616px) {
