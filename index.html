@@ -1,111 +1,83 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonas Buerskog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-<html>
-  <head>
-    <title>Jonas Buerskog</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
+<!-- Navbar -->
+<header class="navbar fade-navbar">
+  <div class="logo">JONAS BRSKG</div>
 
-  <body>
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-  <!-- Sidebar/menu -->
-  <input type="checkbox" id="myNav" style="display: none;">
-  <nav class="sidebar">
-    <h2 class="sidebar-logo mobile-hide">JONAS<br>BRSKG</h2><br>
-    <div class="sidebar-nav">
-    <a tabindex="2" href="index" class="aactive">home</a><br>
-    <a tabindex="8" href="showreel" class="a">showreel</a><br>
-      <!-- <input type="checkbox" id="myWork" style="display: none">
-      <label for="myWork">
-      <span tabindex="3" class="a">featured_work</span>
-      </label>
-      <span class="sidebar-tray-icon">+</span><br>
-        <a tabindex="4" href="work1.html" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-        <a tabindex="5" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-        <a tabindex="6" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-    <a tabindex="7" href="about.html" class="a">about</a><br> -->
-    <a tabindex="8" href="about" class="a">about</a><br>
-    <a tabindex="8" href="contact" class="a">contact</a><br>
+  <nav class="nav-links">
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="showreel.html" onclick="closeMenu()">Showreel</a>
+
+<!-- Project Folder
+    <div class="dropdown">
+      <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+  Projects <span class="dropdown-arrow"></span>
+</a>
+      <div class="dropdown-menu">
+        <a href="projects/project1" onclick="closeMenu()">Between US</a>
+        <a href="projects/project2" onclick="closeMenu()">Tam</a>
+        <a href="projects/project3" onclick="closeMenu()">VOSS</a>
+      </div>
     </div>
-    <div class="sidebarSubheader centreX">
-      <p>all photos are subject to copyright © 2025
-  Jonas Buerskog. all rights reserved.</p>
-    </div>
+-->
+    <a href="about.html" onclick="closeMenu()">About</a>
+    <a href="contact.html" onclick="closeMenu()">Contact</a>
   </nav>
+</header>
 
-  <!-- Topnavbar for smaller devices -->
-  <header class="topbar">
-    <div class="topnav-l">
-      <div class="centreY">
-        <p><b>JONAS</p>
-        <p>BRSKG</b></p>
-      </div>
-    </div>
-    <div class="topnav-r">
-        <label tabindex="1" class="a" for="myNav">&#9776;</label>
-    </div>
-  </header>
+<!-- Main -->
+<!-- Hero -->
+<section class="hero">
+  <video id="hero-video" autoplay muted playsinline preload="metadata"
+    poster="misc/herovideo-thumbnail.jpg" class="hero-video">
+    <source src="misc/herovideo.webm" type="video/webm">
+  </video>
+  <div class="hero-overlay">
+    <h1 id="hero-text" class="typewriter-text">JONAS BUERSKOG</h1>
+  </div>
+</section>
 
-  <!-- Page contents -->
-    <div class="main">
-      <div class="gallery">
-        <image loading="lazy" src="indexportfolio/final_tam_1.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/treasure_maddi.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/treasure_tam.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/kav_2.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/final_tam_2.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/tam_2.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/bread.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/voss.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/tam_1.jpg" class="image" onclick="FullView(this.src)">
-        <image loading="lazy" src="indexportfolio/kav_1.jpg" class="image" onclick="FullView(this.src)">
-      </div>
+<!-- Gallery -->
+<section class="gallery">
+  <img src="indexportfolio/final_tam_1.jpg" onclick="openFullscreen(0)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/treasure_maddi.jpg" onclick="openFullscreen(1)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/treasure_tam.jpg" onclick="openFullscreen(2)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/kav_2.jpg" onclick="openFullscreen(3)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/final_tam_2.jpg" onclick="openFullscreen(4)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/tam_2.jpg" onclick="openFullscreen(5)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/bread.jpg" onclick="openFullscreen(6)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/voss.jpg" onclick="openFullscreen(7)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/tam_1.jpg" onclick="openFullscreen(8)" class="fade-on-scroll gallery-img">
+  <img src="indexportfolio/kav_1.jpg" onclick="openFullscreen(9)" class="fade-on-scroll gallery-img">
+</section>
 
+<!-- Fullscreen -->
+<div id="fullscreen-view" class="fullscreen-view">
+  <span class="close" onclick="closeFullscreen()">&times;</span>
+  <img id="fullscreen-img">
+  <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+  <a class="next" onclick="changeImage(1)">&#10095;</a>
+</div>
 
-      <div id="FullImageView" onclick="CloseFullView()">
-        <image id="FullImage">
-      </div>
+<footer class="footer">
+  <p>All photos © 2025 Jonas Buerskog. All rights reserved.</p>
+</footer>
 
-      <script type="text/javascript">
-        function FullView(ImgLink) {
-          const fullView = document.getElementById("FullImageView");
-
-          // 1. Make the element block-level so CSS transitions can affect it
-          fullView.style.display = "flex";
-
-          // 2. Set the image source
-          document.getElementById("FullImage").src = ImgLink;
-
-          // 3. Force the browser to recognize the display change *before* adding the class
-          //    This is necessary for the fade-in transition to work correctly
-          getComputedStyle(fullView).opacity;
-
-          // 4. Add the class to start the quick fade-in
-          fullView.classList.add("is-visible");
-        }
-
-        function CloseFullView() {
-          const fullView = document.getElementById("FullImageView");
-
-          // 1. Start the quick fade-out by removing the 'is-visible' class
-          fullView.classList.remove("is-visible");
-
-          // 2. Wait for the transition to finish before setting display: none
-          fullView.addEventListener('transitionend', function handler(event) {
-            if (event.propertyName === 'opacity' && window.getComputedStyle(fullView).opacity == 0) {
-              // 3. Set display to none only AFTER the fade is complete
-              fullView.style.display = "none";
-
-              // 4. Clean up the event listener
-              fullView.removeEventListener('transitionend', handler);
-            }
-          });
-        }
-      </script>
-
-
-    </div>
-  </body>
+<script src="script.js"></script>
+</body>
 </html>

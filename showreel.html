@@ -1,59 +1,81 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <title>Showreel - Jonas Buerskog</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Jonas Buerskog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
 
-<!-- Sidebar/menu -->
-<input type="checkbox" id="myNav" style="display: none;">
-<nav class="sidebar">
-  <h2 class="sidebar-logo mobile-hide">JONAS<br>BRSKG</h2><br>
-  <div class="sidebar-nav">
-  <a tabindex="2" href="index" class="a">home</a><br>
-  <a tabindex="2" href="showreel" class="aactive">showreel</a><br>
-  <!-- <input type="checkbox" id="myWork" style="display: none">
-  <label for="myWork">
-  <span tabindex="3" class="a">featured_work</span>
-  </label>
-  <span class="sidebar-tray-icon">+</span><br>
-    <a tabindex="4" href="work1.html" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-    <a tabindex="5" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-    <a tabindex="6" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-<a tabindex="7" href="about.html" class="a">about</a><br> -->
-  <a tabindex="8" href="about" class="a">about</a><br>
-  <a tabindex="8" href="contact" class="a">contact</a><br>
-  </div>
-  <div class="sidebarSubheader centreX">
-    <p>all photos are subject to copyright © 2025
-Jonas Buerskog. all rights reserved.</p>
-  </div>
-</nav>
+  <!-- Navbar -->
+  <header class="navbar fade-navbar">
+    <div class="logo">JONAS BRSKG</div>
 
-<!-- Topnavbar for smaller devices -->
-<header class="topbar">
-  <div class="topnav-l">
-    <div class="centreY">
-      <p><b>JONAS</p>
-      <p>BRSKG</b></p>
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="showreel.html" onclick="closeMenu()">Showreel</a>
+
+  <!-- Project Folder
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+    Projects <span class="dropdown-arrow"></span>
+  </a>
+        <div class="dropdown-menu">
+          <a href="projects/project1" onclick="closeMenu()">Between US</a>
+          <a href="projects/project2" onclick="closeMenu()">Tam</a>
+          <a href="projects/project3" onclick="closeMenu()">VOSS</a>
+        </div>
+      </div>
+  -->
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
+    </nav>
+  </header>
+
+<!-- Main --->
+<!-- Showreel -->
+<section class="main">
+  <div class="mainContainer centre-content">
+
+    <div class="youtube-embed-block">
+
+      <!-- Responsive YouTube embed -->
+      <div class="youtube-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/YTO5ZdAZ_FQ?si=iVisqUFDx7Ix9Geu"
+          title="Showreel 2025"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Supporting text -->
+      <div class="youtube-embed-text">
+        <p>
+          Showreel 2025
+        </p>
+      </div>
     </div>
   </div>
-  <div class="topnav-r">
-    <label tabindex="1" class="centreY" for="myNav">&#9776;</label>
-  </div>
-</header>
+</section>
 
-<!-- Page contents -->
-  <div class="main">
-    <div>
-    <iframe class="mainVideo centreX" src="https://www.youtube-nocookie.com/embed/YTO5ZdAZ_FQ?si=iVisqUFDx7Ix9Geu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>All photos © 2025 Jonas Buerskog. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 
 </body>
 </html>
