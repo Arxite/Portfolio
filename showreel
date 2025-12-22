@@ -20,8 +20,8 @@
     </div>
 
     <nav class="nav-links">
-      <a href="index.html" onclick="closeMenu()">Home</a>
-      <a href="showreel.html" onclick="closeMenu()">Showreel</a>
+      <a href="index" onclick="closeMenu()">Home</a>
+      <a href="showreel" onclick="closeMenu()">Showreel</a>
 
   <!-- Project Folder
       <div class="dropdown">
@@ -35,8 +35,8 @@
         </div>
       </div>
   -->
-      <a href="about.html" onclick="closeMenu()">About</a>
-      <a href="contact.html" onclick="closeMenu()">Contact</a>
+      <a href="about" onclick="closeMenu()">About</a>
+      <a href="contact" onclick="closeMenu()">Contact</a>
     </nav>
   </header>
 
@@ -79,4 +79,5 @@
 
 </body>
 </html>
+
 
