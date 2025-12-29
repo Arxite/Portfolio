@@ -244,7 +244,7 @@ function preload() {
 
 /* ---------- URL HASH SUPPORT ---------- */
 function updateHash() {
-  history.replaceState(null, "", `#${currentIndex + 1}`);
+  history.replaceState(null, "", `${currentIndex + 1}`);
 }
 
 window.addEventListener("load", () => {
@@ -254,3 +254,4 @@ window.addEventListener("load", () => {
     if (images[index]) openLightbox(index);
   }
 });
+
