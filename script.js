@@ -81,6 +81,38 @@ window.addEventListener("resize", () => {
   if (window.innerWidth > 768) closeMenu();
 });
 
+/* ---------- DROPDOWN ---------- */
+function toggleDropdown(e) {
+  e.preventDefault();
+  const dropdown = e.target.closest(".dropdown");
+  const menu = dropdown.querySelector(".dropdown-menu");
+
+  dropdown.classList.toggle("open");
+
+  if (window.innerWidth <= 768) {
+    if (dropdown.classList.contains("open")) {
+      menu.style.transition =
+        "max-height 0.5s cubic-bezier(0.25, 1.25, 0.5, 1)";
+      menu.style.maxHeight = menu.scrollHeight + "px";
+
+      const links = menu.querySelectorAll("a");
+      links.forEach((link, index) => {
+        link.style.transitionDelay = `${index * 0.05}s`;
+      });
+    } else {
+      menu.style.maxHeight = "0";
+      const links = menu.querySelectorAll("a");
+      links.forEach(link => (link.style.transitionDelay = "0s"));
+    }
+  } else {
+    navbarEl.classList.toggle(
+      "dropdown-active",
+      dropdown.classList.contains("open")
+    );
+  }
+}
+
+
 /* =========================
    SCROLL LOCK (SAFE)
 ========================= */
