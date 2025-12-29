@@ -1,0 +1,237 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+/*
+  GALLARY
+*/
+.gallery {
+  padding: 55px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Masonry container */
+.masonry {
+  width: 100%;
+  max-width: 2400px; /* prevents massive images on ultrawide */
+  column-gap: 16px;
+  column-count: 3; /* default desktop */
+}
+
+/* Tablets */
+@media (max-width: 1200px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+.masonry img {
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  break-inside: avoid;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/*
+  LIGHTBOX
+*/
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+/* Active state */
+#lightbox.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Figure wrapper */
+.lightbox-figure {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+/* Image animation */
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+
+  transform: scale(0.96);
+  opacity: 0;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+/* Animate image IN */
+#lightbox.active #lightbox-img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Caption */
+#lightbox-caption {
+  margin-top: 12px;
+  color: #ccc;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+/* Controls */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #FE6363;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.lightbox-close {
+  top: 14px;
+  right: 20px;
+  font-size: 40px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  padding: 20px;
+}
+
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:hover {
+  color: grey;
+}
+
+/* Closing animation */
+#lightbox.closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Animate image out */
+#lightbox.closing #lightbox-img {
+  opacity: 0;
+}
+
+/* ---------- PAGE TRANSITIONS ---------- */
+#page {
+  opacity: 0; /* start hidden */
+  transition: opacity 0.5s ease; /* default, overridden by JS */
+  visibility: hidden; /* ensure nothing flashes */
+}
+
+#page.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Showreel section */
+.showreel {
+  min-height: 100vh; /* fill the viewport vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  text-align: center;
+  padding: 0 16px;         /* horizontal padding only */
+  color: #fff;
+}
+
+/* Fixed 16:9 responsive container */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  aspect-ratio: 16 / 9; /* maintain 16:9 ratio */
+  margin-bottom: 30px;  /* spacing below the video */
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Caption */
+.video-caption {
+  max-width: 800px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: grey;
+}
+
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;  /* horizontal centering */
+  align-items: center;      /* vertical centering */
+  padding: 0 16px;
+  color: #fff;
+}
+
+.contact-section p {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  color: #FE6363;
+}
+
+.contact-section a {
+  color: #FE6363;
+  text-decoration: none;
+}
