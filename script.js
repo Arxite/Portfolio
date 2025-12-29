@@ -1,8 +1,8 @@
 /* =========================
    CONFIGURATION
 ========================= */
-const fadeInDuration = 1000;   // ms
-const fadeOutDuration = 500;  // ms
+const fadeInDuration = 1000;
+const fadeOutDuration = 500;
 
 /* =========================
    PAGE TRANSITIONS
@@ -10,12 +10,10 @@ const fadeOutDuration = 500;  // ms
 const page = document.getElementById("page");
 const links = document.querySelectorAll("a[href]");
 
-// Start hidden
 page.style.opacity = 0;
 page.style.transition = `opacity ${fadeInDuration}ms ease`;
 page.style.visibility = "hidden";
 
-// FADE-IN on page load
 window.addEventListener("load", () => {
   setTimeout(() => {
     page.style.visibility = "visible";
@@ -23,15 +21,12 @@ window.addEventListener("load", () => {
   }, 50);
 });
 
-// FADE-OUT on link click
 links.forEach(link => {
-  link.addEventListener("click", function(e) {
+  link.addEventListener("click", e => {
     const href = link.getAttribute("href");
-
     if (!href || href.startsWith("#") || href === window.location.pathname) return;
 
     e.preventDefault();
-
     page.style.transition = `opacity ${fadeOutDuration}ms ease`;
     page.style.opacity = 0;
 
@@ -41,7 +36,6 @@ links.forEach(link => {
   });
 });
 
-// Handle back/forward buttons
 window.addEventListener("pageshow", () => {
   page.style.transition = `opacity ${fadeInDuration}ms ease`;
   page.style.visibility = "visible";
@@ -56,7 +50,6 @@ const hamburger = document.querySelector(".hamburger");
 const navbarEl = document.querySelector(".navbar");
 const dropdowns = document.querySelectorAll(".dropdown");
 
-// Toggle mobile menu
 function toggleMenu(btn) {
   btn.classList.toggle("active");
   navLinks.classList.toggle("open");
@@ -66,7 +59,6 @@ function toggleMenu(btn) {
   }
 }
 
-// Close menu
 function closeMenu() {
   navLinks.classList.remove("open");
   hamburger.classList.remove("active");
@@ -75,65 +67,30 @@ function closeMenu() {
   dropdowns.forEach(dd => {
     dd.classList.remove("open");
     const menu = dd.querySelector(".dropdown-menu");
-    menu.style.maxHeight = "0";
-
-    const links = menu.querySelectorAll("a");
-    links.forEach(link => (link.style.transitionDelay = "0s"));
+    if (menu) menu.style.maxHeight = "0";
   });
 }
 
-// Toggle dropdown
-function toggleDropdown(e) {
-  e.preventDefault();
-  const dropdown = e.target.closest(".dropdown");
-  const menu = dropdown.querySelector(".dropdown-menu");
-
-  dropdown.classList.toggle("open");
-
-  if (window.innerWidth <= 768) {
-    if (dropdown.classList.contains("open")) {
-      menu.style.transition = "max-height 0.5s cubic-bezier(0.25, 1.25, 0.5, 1)";
-      menu.style.maxHeight = menu.scrollHeight + "px";
-
-      const links = menu.querySelectorAll("a");
-      links.forEach((link, index) => {
-        link.style.transitionDelay = `${index * 0.05}s`;
-      });
-    } else {
-      menu.style.maxHeight = "0";
-      const links = menu.querySelectorAll("a");
-      links.forEach(link => (link.style.transitionDelay = "0s"));
-    }
-  } else {
-    navbarEl.classList.toggle("dropdown-active", dropdown.classList.contains("open"));
-  }
-}
-
-// Close menu if click outside
 document.addEventListener("click", e => {
   if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
     closeMenu();
   }
 });
 
-// Reset on resize
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    closeMenu();
-  } else {
-    dropdowns.forEach(dd => {
-      if (dd.classList.contains("open")) {
-        const menu = dd.querySelector(".dropdown-menu");
-        menu.style.maxHeight = menu.scrollHeight + "px";
-
-        const links = menu.querySelectorAll("a");
-        links.forEach((link, index) => {
-          link.style.transitionDelay = `${index * 0.05}s`;
-        });
-      }
-    });
-  }
+  if (window.innerWidth > 768) closeMenu();
 });
+
+/* =========================
+   SCROLL LOCK (SAFE)
+========================= */
+function lockScroll() {
+  document.body.classList.add("scroll-locked");
+}
+
+function unlockScroll() {
+  document.body.classList.remove("scroll-locked");
+}
 
 /* =========================
    LIGHTBOX GALLERY
@@ -155,10 +112,10 @@ images.forEach((img, index) => {
 
 function openLightbox(index) {
   currentIndex = index;
+  lockScroll();
 
   lightboxImg.src = "";
   lightboxImg.style.opacity = "0";
-  lightboxImg.style.transform = "scale(1)";
 
   lightbox.classList.remove("closing");
   lightbox.classList.add("active");
@@ -171,32 +128,37 @@ function openLightbox(index) {
 function showImage() {
   const img = images[currentIndex];
 
+  // Animate OUT
   lightboxImg.style.opacity = "0";
   lightboxImg.style.transform = "scale(1)";
 
   setTimeout(() => {
+    // Swap image
     lightboxImg.src = img.src;
     caption.textContent = img.alt || "";
 
-    requestAnimationFrame(() => {
-      lightboxImg.style.opacity = "1";
-      lightboxImg.style.transform = "scale(1)";
-    });
+    // Force browser to apply styles before animating in
+    lightboxImg.getBoundingClientRect();
+
+    // Animate IN
+    lightboxImg.style.opacity = "1";
+    lightboxImg.style.transform = "scale(1)";
 
     preload();
-  }, 200);
+  }, 200); // must match your CSS timing
 }
+
 
 /* ---------- CLOSE ---------- */
 function closeLightbox() {
   lightbox.classList.add("closing");
   lightboxImg.style.opacity = "0";
-  lightboxImg.style.transform = "scale(1)";
 
   setTimeout(() => {
     lightbox.classList.remove("active", "closing");
+    unlockScroll();
     history.pushState("", document.title, window.location.pathname);
-  }, 300);
+  }, 400);
 }
 
 closeBtn.addEventListener("click", closeLightbox);
@@ -227,9 +189,12 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowLeft") prevBtn.click();
 });
 
-/* ---------- SWIPE (MOBILE) ---------- */
+/* ---------- SWIPE ---------- */
 let startX = 0;
-lightbox.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+lightbox.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
 lightbox.addEventListener("touchend", e => {
   const endX = e.changedTouches[0].clientX;
   const diff = startX - endX;
