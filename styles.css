@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Reset & Global
-   ========================================================================== */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -8,831 +6,232 @@
 }
 
 html, body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: black;
-  color: white;
-  user-select: none;
-  flex: 1 0 auto;
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  background-color: black;
+  overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  transition: color 0.15s ease;
-}
-a:hover,
-a:active {
-  color: grey;
-}
-
-/* ==========================================================================
-   Navbar
-   ========================================================================== */
-.navbar {
-  position: fixed;
-  top: -55px;
-  width: 100%;
-  height: 55px;
+/*
+  GALLARY
+*/
+.gallery {
+  padding: 55px 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 2s ease, top 2s ease;
+  justify-content: center;
 }
 
-.navbar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Masonry container */
+.masonry {
   width: 100%;
-  height: 100px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0));
-  z-index: -1;
-  transition: height 0.35s ease, background 0.35s ease;
+  max-width: 2400px; /* prevents massive images on ultrawide */
+  column-gap: 16px;
+  column-count: 3; /* default desktop */
 }
 
-/* Hamburger-triggered menu (mobile) */
-.navbar.hamburger-open::before {
-  height: 500px; /* taller height for mobile menu */
-}
-
-/* Dropdown/project-triggered menu (desktop or mobile) */
-.navbar.dropdown-active::before {
-  height: 220px; /* default dropdown/project height */
-}
-
-/* Mobile dropdown gradient expansion */
-@media (max-width: 768px) {
-  .navbar.dropdown-mobile-active::before {
-    height: 650px; /* adjust this to fit your dropdown content */
+/* Tablets */
+@media (max-width: 1200px) {
+  .masonry {
+    column-count: 3;
   }
 }
 
-.nav-links a {
-  display: inline-block;
-  transition: transform 0.15s ease, color 0.15s ease;
+/* Mobile */
+@media (max-width: 768px) {
+  .masonry {
+    column-count: 2;
+  }
 }
 
-.nav-links a:hover {
-  color: red;
-  transform: scale(0.98);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Ensure dropdown behaves like other links */
-.nav-links > a,
-.nav-links > .dropdown {
-  display: flex;
-  align-items: center;
-}
-
-/* =========================
-   HAMBURGER
-   ========================= */
-.hamburger {
-  display: none; /* still hidden on desktop */
-  flex-direction: column;
-  gap: 5px;
+.masonry img {
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  break-inside: avoid;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-.hamburger span {
-  width: 25px;
-  height: 2px;
-  background: white;
-  transition: transform 0.35s ease, opacity 0.25s ease, background 0.25s ease;
-}
+/*
+  LIGHTBOX
+*/
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
 
-/* Change color when active */
-.hamburger.active span {
-  background: red;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* =========================
-   DROPDOWN
-   ========================= */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: black;
   display: flex;
-  flex-direction: column;
-  min-width: 160px;
+  align-items: center;
+  justify-content: center;
+
   opacity: 0;
-  transform: translateY(10px);
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+
+  transition: opacity 0.3s ease;
+  z-index: 9999;
 }
 
-.dropdown.open .dropdown-menu {
+/* Active state */
+#lightbox.active {
   opacity: 1;
-  transform: translateY(0);
+  visibility: visible;
   pointer-events: auto;
 }
 
-/* Desktop hover */
-@media (min-width: 769px) {
-  .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-}
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.dropdown-arrow {
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: rotate(45deg);
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  opacity: 0.7;
-}
-
-/* Rotate arrow when open */
-.dropdown.open .dropdown-arrow {
-  transform: rotate(-135deg);
-  opacity: 1;
-}
-
-/* Hover feedback */
-.dropdown-toggle:hover .dropdown-arrow {
-  opacity: 1;
-}
-
-/* =========================
-   GRADIENT EXTENSION (KEY PART)
-   ========================= */
-
-/* Default navbar gradient height */
-.navbar::before {
-  height: 100px;
-  transition: height 0.35s ease;
-}
-
-/* When dropdown is open, extend gradient */
-.navbar.dropdown-active::before {
-  height: 250px;
-}
-
-/* =========================
-   DROPDOWN MENU
-   ========================= */
-.dropdown-menu {
-  background: transparent;
-  padding-top: 0.5rem;
-}
-
-.dropdown-menu a {
-  padding: 0.4rem 1rem;
-  font-size: 0.95rem;
-}
-
-/* Slight fade-in polish */
-.dropdown-menu a {
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.dropdown.open .dropdown-menu a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================
-   DROPDOWN ARROW (+ → ×) — MATCH NAV TEXT
-   ========================= */
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 10 1px;
-  color: white;
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-
-/* Hover BOTH text and icon together */
-.dropdown-toggle:hover {
-  color: red;
-  transform: scale(0.98);
-}
-
-/* Arrow container */
-.dropdown-arrow {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  display: inline-block;
-  transform: rotate(0deg); /* + */
-  transition: transform 0.25s ease;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-/* Draw the + using lines */
-.dropdown-arrow::before,
-.dropdown-arrow::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-  border-radius: 1px;
-}
-
-/* Horizontal line */
-.dropdown-arrow::before {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  transform: translateY(-50%);
-}
-
-/* Vertical line */
-.dropdown-arrow::after {
-  left: 50%;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  transform: translateX(-50%);
-}
-
-/* Open = × */
-.dropdown.open .dropdown-arrow {
-  transform: rotate(45deg);
-}
-
-/* =========================
-   MOBILE NAV
-   ========================= */
-@media (max-width: 768px) {
-  /* Show hamburger */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 1100; /* ensure above menu */
-  }
-
-  .hamburger span {
-    width: 25px;
-    height: 2px;
-    background: red;
-    transition: transform 0.35s ease, opacity 0.25s ease, background 0.25s ease;
-    z-index: 9999;
-  }
-
-  .hamburger.active span {
-    background: red;
-  }
-
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  /* Mobile nav links container */
-  .nav-links {
-    position: absolute;
-    top: 55px;
-    right: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    padding-left: 0;
-    z-index: 1000;
-  }
-
-  .nav-links.open {
-    max-height: 1000px; /* expand fully */
-    opacity: 1;
-  }
-
-  /* Dropdown toggle and arrow centered */
-  .nav-links .dropdown-toggle {
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 1rem 2rem;
-    color: white;
-  }
-
-  .nav-links .dropdown-toggle:hover {
-    color: red;
-  }
-
-  /* Dropdown menu stacked vertically under parent */
-  .nav-links .dropdown-menu {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0.5rem;
-  }
-
-  .nav-links .dropdown.open .dropdown-menu {
-    display: flex;
-  }
-
-  /* Dropdown child links styling */
-  .nav-links .dropdown-menu a {
-    width: auto;
-    text-align: center;
-    padding: 0.5rem 1rem;
-  }
-
-  /* Dropdown arrow (+ → ×) for mobile */
-  .nav-links .dropdown-toggle .dropdown-arrow {
-    margin-left: 5px;
-    transform: rotate(0deg); /* + */
-  }
-
-  .nav-links .dropdown.open .dropdown-toggle .dropdown-arrow {
-    transform: rotate(45deg); /* × */
-  }
-
-  /* Gradient expansion for mobile menu */
-  .navbar.dropdown-active::before {
-    height: 220px; /* adjust to fit menu */
-  }
-}
-/* ==========================================================================
-   MOBILE HAMBURGER DROPDOWN FIX
-   ========================================================================== */
-@media (max-width: 768px) {
-  /* Ensure dropdown parent fills full width */
-  .nav-links .dropdown {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Dropdown toggle full width and centered */
-  .nav-links .dropdown-toggle {
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 1rem 2rem;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.2s ease;
-  }
-
-  /* Dropdown menu inside mobile nav */
-  .nav-links .dropdown-menu {
-    position: relative;      /* so it flows below the button */
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;        /* for smooth slide animation */
-    max-height: 0;           /* hidden by default */
-    opacity: 0;
-    transition: max-height 1.2s, opacity 0.6s ease, padding 1.2s ease;
-    padding: 0;              /* remove padding when closed */
-  }
-
-  /* Open state for dropdown */
-  .nav-links .dropdown.open .dropdown-menu {
-    display: flex;
-    max-height: 300px;       /* adjust to fit content */
-    opacity: 1;
-  }
-
-  /* Dropdown menu links styling */
-  .nav-links .dropdown-menu a {
-    width: 100%;
-    text-align: center;
-    padding: 0.5rem 1rem;
-    opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-
-  /* Animate links in when parent dropdown opens */
-  .nav-links .dropdown.open .dropdown-menu a {
-    opacity: 1;
-  }
-
-  /* Adjust dropdown arrow */
-  .nav-links .dropdown-toggle .dropdown-arrow {
-    margin-left: 5px;
-    transition: transform 0.25s ease;
-  }
-
-  .nav-links .dropdown.open .dropdown-toggle .dropdown-arrow {
-    transform: rotate(45deg); /* + → × */
-  }
-}
-
-@media (max-width: 768px) {
-  /* Normalize spacing for ALL nav items */
-  .nav-links > a,
-  .nav-links .dropdown-toggle {
-    padding: 0.75rem 1rem;   /* pick one consistent value */
-    line-height: 1.2;
-  }
-}
-@media (max-width: 768px) {
-  .nav-links .dropdown-menu a {
-    opacity: 0.9;
-    font-size: 0.8rem;
-    line-height: 1.8;
-  }
-}
-
-
-/* =========================
-   MOBILE NAV GRADIENT
-   ========================= */
-@media (max-width: 768px) {
-  /* Keep the hamburger and mobile nav rules */
-
-  /* Expand gradient only when mobile menu is open */
-  .navbar.dropdown-active::before {
-    height: 220px; /* adjust to fit mobile menu */
-  }
-}
-
-/* ==========================================================================
-   Hero Video
-   ========================================================================== */
-.hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  will-change: transform, opacity; /* GPU optimization */
-  background: black;
-  opacity: 0;
-  transition: opacity 1.5s ease-in;
-}
-
-.hero-overlay {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Figure wrapper */
+.lightbox-figure {
   text-align: center;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
-.hero-overlay h1 {
-  font-size: 8vw;          /* responsive scaling */
-  max-font-size: 120px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  white-space: pre;
-  color: red;
+/* Image animation */
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+
+  transform: scale(0.96);
   opacity: 0;
-  border-right: 2px solid white;
-  transition: opacity 0.3s ease;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
-.hero-overlay h1.show {
+/* Animate image IN */
+#lightbox.active #lightbox-img {
+  transform: scale(1);
   opacity: 1;
 }
 
-/* ==========================================================================
-   Gallery
-   ========================================================================== */
-.gallery {
-  columns: 500px;
-  column-gap: 5px;
-  margin-top: 5px;     /* same spacing as between images */
-  margin-bottom: 2rem;
-  padding: 0 5px;
+/* Caption */
+#lightbox-caption {
+  margin-top: 12px;
+  color: #ccc;
+  font-size: 14px;
+  letter-spacing: 0.04em;
 }
 
-.gallery-img {
-  width: 100%;
-  margin-bottom: 2px;
+/* Controls */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #FE6363;
+  transition: color 0.3s ease;
   cursor: pointer;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: transform 0.25s ease, opacity 1s ease;
-}
-
-.gallery-img.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.gallery-img:hover {
-  transform: scale(0.98);
+.lightbox-close {
+  top: 14px;
+  right: 20px;
+  font-size: 40px;
 }
 
-/* ==========================================================================
-   Fullscreen Viewer
-   ========================================================================== */
-.fullscreen-view {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.95);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  padding: 20px;
 }
 
-.fullscreen-view img {
-  max-width: 90%;
-  max-height: 90%;
-}
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
 
-.fullscreen-view .close,
-.fullscreen-view .prev,
-.fullscreen-view .next {
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-
-.fullscreen-view .close:hover,
-.fullscreen-view .prev:hover,
-.fullscreen-view .next:hover {
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:hover {
   color: grey;
 }
 
-.fullscreen-view .close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  font-size: 3rem;
-}
-
-.fullscreen-view .prev,
-.fullscreen-view .next {
-  position: absolute;
-  top: 50%;
-  font-size: 3rem;
-  user-select: none;
-  transform: translateY(-50%);
-}
-
-.fullscreen-view .prev { left: 10px; }
-.fullscreen-view .next { right: 10px; }
-
-/* ==========================================================================
-   SHOWREEL
-   ========================================================================== */
-
- .youtube-embed-block {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 100%;
- }
-
- /* Responsive 16:9 container */
- .youtube-embed {
-   position: relative;
-   width: 100%;
-   max-width: 900px;
-   aspect-ratio: 16 / 9;
-   background: black;
- }
-
- /* Fallback for older browsers */
- .youtube-embed iframe {
-   position: absolute;
-   inset: 0;
-   width: 100%;
-   height: 100%;
-   border: none;
- }
-
- /* Supporting text */
- .youtube-embed-text {
-   margin-top: 1.5rem;
-   max-width: 500px;
-   text-align: center;
- }
-
- .youtube-embed-text p {
-   font-size: 0.95rem;
-   line-height: 1.7;
-   color: grey;
-   margin-bottom: 0.75rem;
- }
-
- /* Mobile tuning */
- @media (max-width: 768px) {
-   .youtube-embed {
-     max-width: 100%;
-   }
-
-   .youtube-embed-text {
-     padding: 0 1rem;
-   }
- }
-
-
-/* ==========================================================================
-   About
-   ========================================================================== */
-   /* Center About page content */
-   .centre-content {
-     display: flex;
-     flex-direction: row;
-     align-items: center;      /* vertical centering */
-     justify-content: center;  /* horizontal centering */
-     gap: 3rem;                /* space between text and image */
-     min-height: 70vh;         /* center in viewport */
-     flex-wrap: wrap;          /* wrap on smaller screens */
-   }
-   .main {
-     min-height: calc(100vh - 75px);
-     padding-top: 100px;
-   }
-   .mainText {
-     max-width: 500px;
-     line-height: 1.7;
-     font-size: 1rem;
-     color: white;
-   }
-
-   .mainTextImage img {
-     max-width: 400px;
-     width: 100%;
-     height: auto;
-     border-radius: 5px;
-   }
-
-   /* Fade-in effect for About page */
-   .fade-on-scroll {
-     opacity: 0;
-     transform: translateY(20px);
-     transition: opacity 1s ease, transform 1s ease;
-   }
-
-   .fade-on-scroll.visible {
-     opacity: 1;
-     transform: translateY(0);
-   }
-
-   /* Responsive adjustments */
-   @media (max-width: 1000px) {
-     .centre-content {
-       flex-direction: column;
-       text-align: center;
-     }
-     .mainTextImage img {
-       margin: 1rem 0;
-     }
-   }
-   /* ==========================================================================
-      ABOUT PAGE – MOBILE CONTENT
-      ========================================================================== */
-   @media (max-width: 1000px) {
-
-     /* Give content breathing room below fixed navbar */
-     .main {
-       padding-top: 90px; /* prevents content feeling stuck under nav */
-     }
-
-     /* Stack content cleanly */
-     .centre-content {
-       gap: 1.5rem;       /* tighter but intentional spacing */
-       padding: 0 1.25rem;/* side padding for readability */
-     }
-
-     /* Improve text readability */
-     .mainText {
-       max-width: 100%;
-       font-size: 0.95rem;
-       line-height: 1.8;
-     }
-
-     .mainText p {
-       margin-bottom: 1.2rem;
-     }
-
-     /* Image sizing for mobile */
-     .mainTextImage img {
-       max-width: 280px;
-     }
-   }
-
-/* ==========================================================================
-   Footer
-   ========================================================================== */
-  .footer {
-    flex-shrink: 0;
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.8rem;
-    background-color: black;
-    color: grey;
-    height: 75px;
-  }
-
-/* ==========================================================================
-   Typewriter
-   ========================================================================== */
-   /* Typewriter text with blinking cursor */
-   .typewriter-text {
-     opacity: 0;
-     color: red;
-     white-space: pre;
-     border-right: 2px solid white;
-     transition: opacity 0s ease;
-   }
-
-   .typewriter-text.show {
-     opacity: 1;
-     animation: blink-cursor 0.7s steps(44) infinite;
-   }
-
-   /* Blinking cursor animation */
-   @keyframes blink-cursor {
-     0%, 49% { border-color: grey; }
-     50%, 100% { border-color: transparent; }
-   }
-
-/* ==========================================================================
-   Fade-on-scroll
-   ========================================================================== */
-.fade-on-scroll {
+/* Closing animation */
+#lightbox.closing {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  pointer-events: none;
 }
 
-/* ==========================================================================
-   Responsive column adjustments with minimum column width
-   ========================================================================== */
-@media (max-width: 1580px) { .gallery { columns: 300px; } }
-@media (max-width: 1200px) { .gallery { columns: 250px; } }
-@media (max-width: 949px)  { .gallery { columns: 200px; } }
-@media (max-width: 616px)  { .gallery { columns: 180px; } }
-@media (max-width: 418px)  { .gallery { columns: 150px; } }
-@media (max-width: 318px)  { .gallery { columns: 120px; } }
+/* Animate image out */
+#lightbox.closing #lightbox-img {
+  opacity: 0;
+}
+
+/* ---------- PAGE TRANSITIONS ---------- */
+#page {
+  opacity: 0; /* start hidden */
+  transition: opacity 0.5s ease; /* default, overridden by JS */
+  visibility: hidden; /* ensure nothing flashes */
+}
+
+#page.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Showreel section */
+.showreel {
+  min-height: 100vh; /* fill the viewport vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  text-align: center;
+  padding: 0 16px;         /* horizontal padding only */
+  color: #fff;
+}
+
+/* Fixed 16:9 responsive container */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  aspect-ratio: 16 / 9; /* maintain 16:9 ratio */
+  margin-bottom: 30px;  /* spacing below the video */
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Caption */
+.video-caption {
+  max-width: 800px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: grey;
+}
+
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;  /* horizontal centering */
+  align-items: center;      /* vertical centering */
+  padding: 0 16px;
+  color: #fff;
+}
+
+.contact-section p {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  color: #FE6363;
+}
+
+.contact-section a {
+  color: #FE6363;
+  text-decoration: none;
+}

@@ -3,81 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Showreel - Jonas Buerskog</title>
+  <title>Showreel | Jonas Buerskog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=League+Gothic&family=Quicksand:wght@300&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar fade-navbar">
-    <div class="logo">JONAS BRSKG</div>
+<div id="page">
 
-    <!-- Hamburger -->
-    <div class="hamburger" onclick="toggleMenu(this)">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+<!--
+  NAVIGATION
+-->
+<header class="navbar">
+  <a href="index.html" class="logo">JONAS BUERSKOG</a>
 
-    <nav class="nav-links">
-      <a href="index" onclick="closeMenu()">Home</a>
-      <a href="showreel" onclick="closeMenu()">Showreel</a>
-
-  <!-- Project Folder
-      <div class="dropdown">
-        <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-    Projects <span class="dropdown-arrow"></span>
-  </a>
-        <div class="dropdown-menu">
-          <a href="projects/project1" onclick="closeMenu()">Between US</a>
-          <a href="projects/project2" onclick="closeMenu()">Tam</a>
-          <a href="projects/project3" onclick="closeMenu()">VOSS</a>
-        </div>
-      </div>
-  -->
-      <a href="about" onclick="closeMenu()">About</a>
-      <a href="contact" onclick="closeMenu()">Contact</a>
-    </nav>
-  </header>
-
-<!-- Main --->
-<!-- Showreel -->
-<section class="main">
-  <div class="mainContainer centre-content">
-
-    <div class="youtube-embed-block">
-
-      <!-- Responsive YouTube embed -->
-      <div class="youtube-embed">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/YTO5ZdAZ_FQ?si=iVisqUFDx7Ix9Geu"
-          title="Showreel 2025"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <!-- Supporting text -->
-      <div class="youtube-embed-text">
-        <p>
-          Showreel 2025
-        </p>
-      </div>
-    </div>
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-</section>
+
+  <nav class="nav-links">
+    <a href="index.html" onclick="closeMenu()">PORTFOLIO</a>
+    <a href="showreel.html" onclick="closeMenu()">SHOWREEL</a>
+
+    <!-- <div class="dropdown">
+      <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+        PROJECTS <span class="dropdown-arrow">+</span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="project1.html" onclick="closeMenu()">Project 1</a>
+        <a href="project2.html" onclick="closeMenu()">Project 2</a>
+      </div>
+    </div> -->
+
+    <a href="bio.html" onclick="closeMenu()">CONTACT</a>
+  </nav>
+</header>
+
+<!-- SHOWREEL SECTION -->
+<main class="showreel">
+  <div class="video-container">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/YTO5ZdAZ_FQ"
+      title="Jonas Buerskog Showreel"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+  <p class="video-caption">
+    Showreel 2025
+  </p>
+</main>
 
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>All photos © 2025 Jonas Buerskog. All rights reserved.</p>
-  </footer>
+<!--
+  Fullscreen Viewer
+-->
+<div id="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-prev">&#10094;</button>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
 
+  <button class="lightbox-next">&#10095;</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
-
-

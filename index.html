@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonas Buerskog</title>
+  <title>Jonas Buerskog | Photographer and Filmmaker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=League+Gothic&family=Quicksand:wght@300&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
-<!-- Navbar -->
-<header class="navbar fade-navbar">
-  <div class="logo">JONAS BRSKG</div>
+<div id="page">
 
-  <!-- Hamburger -->
+<!--
+  NAVIGATION
+-->
+<header class="navbar">
+  <a href="index.html" class="logo">JONAS BUERSKOG</a>
+
   <div class="hamburger" onclick="toggleMenu(this)">
     <span></span>
     <span></span>
@@ -20,65 +27,60 @@
   </div>
 
   <nav class="nav-links">
-    <a href="index" onclick="closeMenu()">Home</a>
-    <a href="showreel" onclick="closeMenu()">Showreel</a>
+    <a href="index.html" onclick="closeMenu()">PORTFOLIO</a>
+    <a href="showreel.html" onclick="closeMenu()">SHOWREEL</a>
 
-<!-- Project Folder
-    <div class="dropdown">
+    <!-- <div class="dropdown">
       <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-  Projects <span class="dropdown-arrow"></span>
-</a>
+        PROJECTS <span class="dropdown-arrow">+</span>
+      </a>
       <div class="dropdown-menu">
-        <a href="projects/project1" onclick="closeMenu()">Between US</a>
-        <a href="projects/project2" onclick="closeMenu()">Tam</a>
-        <a href="projects/project3" onclick="closeMenu()">VOSS</a>
+        <a href="project1.html" onclick="closeMenu()">Project 1</a>
+        <a href="project2.html" onclick="closeMenu()">Project 2</a>
       </div>
-    </div>
--->
-    <a href="about" onclick="closeMenu()">About</a>
-    <a href="contact" onclick="closeMenu()">Contact</a>
+    </div> -->
+
+    <a href="bio.html" onclick="closeMenu()">CONTACT</a>
   </nav>
 </header>
 
-<!-- Main -->
-<!-- Hero -->
-<section class="hero">
-  <video id="hero-video" autoplay muted playsinline preload="metadata"
-    poster="misc/herovideo-thumbnail.jpg" class="hero-video">
-    <source src="misc/herovideo.webm" type="video/webm">
-  </video>
-  <div class="hero-overlay">
-    <h1 id="hero-text" class="typewriter-text">JONAS BUERSKOG</h1>
+<!--
+  GALLARY
+-->
+<main class="gallery">
+  <div class="masonry">
+
+    <img src="images/index/final_tam_1.jpg" alt="" loading="lazy">
+    <img src="images/index/treasure_maddi.jpg" alt="" loading="lazy">
+    <img src="images/index/treasure_tam.jpg" alt="" loading="lazy">
+    <img src="images/index/kav_2.jpg" alt="" loading="lazy">
+    <img src="images/index/final_tam_2.jpg" alt="" loading="lazy">
+    <img src="images/index/tam_2.jpg" alt="" loading="lazy">
+    <img src="images/index/bread.jpg" alt="" loading="lazy">
+    <img src="images/index/voss.jpg" alt="" loading="lazy">
+    <img src="images/index/tam_1.jpg" alt="" loading="lazy">
+    <img src="images/index/kav_1.jpg" alt="" loading="lazy">
+
   </div>
-</section>
+</main>
 
-<!-- Gallery -->
-<section class="gallery">
-  <img src="indexportfolio/final_tam_1.jpg" onclick="openFullscreen(0)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/treasure_maddi.jpg" onclick="openFullscreen(1)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/treasure_tam.jpg" onclick="openFullscreen(2)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/kav_2.jpg" onclick="openFullscreen(3)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/final_tam_2.jpg" onclick="openFullscreen(4)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/tam_2.jpg" onclick="openFullscreen(5)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/bread.jpg" onclick="openFullscreen(6)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/voss.jpg" onclick="openFullscreen(7)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/tam_1.jpg" onclick="openFullscreen(8)" class="fade-on-scroll gallery-img">
-  <img src="indexportfolio/kav_1.jpg" onclick="openFullscreen(9)" class="fade-on-scroll gallery-img">
-</section>
+<!--
+  Fullscreen Viewer
+-->
+<div id="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-prev">&#10094;</button>
 
-<!-- Fullscreen -->
-<div id="fullscreen-view" class="fullscreen-view">
-  <span class="close" onclick="closeFullscreen()">&times;</span>
-  <img id="fullscreen-img">
-  <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-  <a class="next" onclick="changeImage(1)">&#10095;</a>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+
+  <button class="lightbox-next">&#10095;</button>
 </div>
 
-<footer class="footer">
-  <p>All photos © 2025 Jonas Buerskog. All rights reserved.</p>
-</footer>
+</div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
