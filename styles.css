@@ -16,6 +16,14 @@ body {
   background-color: black;
   overflow-x: hidden;
 }
+.unselectable-text {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari, Chrome, Opera */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported in Chrome, Edge, Opera and Firefox */
+}
 
 /*
   GALLARY
@@ -238,6 +246,22 @@ body.scroll-locked {
 }
 
 .contact-section a {
+  font-size: 2.68rem;
+  line-height: 1.6;
   color: #FE6363;
   text-decoration: none;
+  transition: color 0.3s;
+}
+.contact-section a:hover {
+  color: grey;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  height: 55px;
+}
+.footer p {
+    color: #FE6363;
+    font-size: 0.6rem;
 }
