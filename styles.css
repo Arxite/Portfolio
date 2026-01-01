@@ -16,7 +16,7 @@ body {
   background-color: black;
   overflow-x: hidden;
 }
-.unselectable-text {
+.unselectable-text p {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari, Chrome, Opera */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -254,6 +254,15 @@ body.scroll-locked {
 }
 .contact-section a:hover {
   color: grey;
+}
+
+@media (max-width: 940px) {
+  .contact-section p {
+    font-size: 1rem;
+  }
+  .contact-section a {
+    font-size: 1.6rem;
+  }
 }
 
 .footer {
