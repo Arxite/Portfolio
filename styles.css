@@ -63,6 +63,7 @@ body {
   break-inside: avoid;
   border-radius: 3px;
   cursor: pointer;
+  break-inside: avoid;
 }
 
 /*
@@ -241,8 +242,12 @@ body.scroll-locked {
 .contact-section p {
   font-size: 2rem;
   line-height: 1.6;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  margin-top: 25px;
   color: #FE6363;
+}
+.contact-subtext {
+  font-size: 5px;
 }
 
 .contact-section a {
