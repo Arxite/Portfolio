@@ -41,6 +41,14 @@ body {
   column-gap: 16px;
   column-count: 3; /* default desktop */
 }
+.masonry img {
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  break-inside: avoid;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 /* Tablets */
 @media (max-width: 1200px) {
@@ -51,19 +59,16 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
+  .gallery {
+    padding: 55px 8px;
+  }
   .masonry {
     column-count: 2;
+    column-gap: 8px;
   }
-}
-
-.masonry img {
-  width: 100%;
-  display: block;
-  margin-bottom: 16px;
-  break-inside: avoid;
-  border-radius: 3px;
-  cursor: pointer;
-  break-inside: avoid;
+  .masonry img {
+    margin-bottom: 8px;
+  }
 }
 
 /*
