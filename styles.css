@@ -34,42 +34,31 @@ body {
   justify-content: center;
 }
 
-/* Masonry container */
+/* Masonry container for JS layout */
 .masonry {
+  position: relative;
   width: 100%;
-  max-width: 2400px; /* prevents massive images on ultrawide */
-  column-gap: 16px;
-  column-count: 3; /* default desktop */
-}
-.masonry img {
-  width: 100%;
-  display: block;
-  margin-bottom: 16px;
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  border-radius: 3px;
-  cursor: pointer;
+  max-width: 2400px;
+  margin: 0 auto;
 }
 
-/* Tablets */
-@media (max-width: 1200px) {
-  .masonry {
-    column-count: 3;
-  }
+.masonry img {
+  position: absolute; /* JS will position them */
+  width: 100%;
+  display: block;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+
+.masonry img:hover {
+  transform: scale(1.015);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .gallery {
-    padding: 55px 8px;
-  }
-  .masonry {
-    column-count: 2;
-    column-gap: 8px;
-  }
-  .masonry img {
-    margin-bottom: 8px;
+    padding: 55px 10px;
   }
 }
 
