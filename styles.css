@@ -46,6 +46,8 @@ body {
   display: block;
   margin-bottom: 16px;
   break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
   border-radius: 3px;
   cursor: pointer;
 }

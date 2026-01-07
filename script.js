@@ -5,6 +5,17 @@ const fadeInDuration = 1000;
 const fadeOutDuration = 500;
 
 /* =========================
+   iOS SAFARI MASONRY FIX
+========================= */
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+if (isIOS) {
+  document.querySelectorAll('.masonry img[loading]').forEach(img => {
+    img.removeAttribute('loading');
+  });
+}
+
+/* =========================
    PAGE TRANSITIONS
 ========================= */
 const page = document.getElementById("page");
@@ -254,5 +265,3 @@ window.addEventListener("load", () => {
     if (images[index]) openLightbox(index);
   }
 });
-
-
