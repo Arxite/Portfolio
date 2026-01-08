@@ -40,6 +40,14 @@ body {
   width: 100%;
   max-width: 2400px;
   margin: 0 auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.masonry.is-ready {
+  opacity: 1;
+  visibility: visible;
 }
 
 .masonry img {

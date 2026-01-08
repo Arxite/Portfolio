@@ -263,11 +263,10 @@ function initMasonry(containerSelector, columnGap = 16) {
   const images = Array.from(container.querySelectorAll("img"));
 
   function layout() {
-    const containerWidth = Math.min(container.clientWidth, 2400); // max-width 2400px
+    const containerWidth = Math.min(container.clientWidth, 2400);
 
-    // Determine column count based on viewport width
-    let columns = 3; // default desktop
-    if (window.innerWidth <= 768) columns = 2; // mobile
+    let columns = 3;
+    if (window.innerWidth <= 768) columns = 2;
 
     const columnHeights = Array(columns).fill(0);
     const columnWidth = (containerWidth - (columns - 1) * columnGap) / columns;
@@ -275,11 +274,9 @@ function initMasonry(containerSelector, columnGap = 16) {
     images.forEach(img => {
       img.style.width = `${columnWidth}px`;
 
-      // Preserve aspect ratio
       const aspectRatio = img.naturalHeight / img.naturalWidth;
       const imgHeight = columnWidth * aspectRatio;
 
-      // Find shortest column
       const minCol = columnHeights.indexOf(Math.min(...columnHeights));
       const top = columnHeights[minCol];
       const left = (columnWidth + columnGap) * minCol;
@@ -292,23 +289,26 @@ function initMasonry(containerSelector, columnGap = 16) {
       columnHeights[minCol] += imgHeight + columnGap;
     });
 
-    // Update container height
     container.style.height = `${Math.max(...columnHeights)}px`;
+
+    // ✅ Reveal only when done
+    container.classList.add("is-ready");
   }
 
-  // Wait for all images to load
   let loadedCount = 0;
   images.forEach(img => {
-    if (img.complete) loadedCount++;
-    else img.addEventListener("load", () => {
+    if (img.complete) {
       loadedCount++;
-      if (loadedCount === images.length) layout();
-    });
+    } else {
+      img.addEventListener("load", () => {
+        loadedCount++;
+        if (loadedCount === images.length) layout();
+      });
+    }
   });
 
   if (loadedCount === images.length) layout();
 
-  // Relayout on resize
   window.addEventListener("resize", layout);
 }
 
