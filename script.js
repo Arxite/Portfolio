@@ -260,16 +260,23 @@ window.addEventListener("load", () => {
 ========================= */
 function initMasonry(containerSelector, columnGap = 16) {
   const container = document.querySelector(containerSelector);
+  if (!container) return;
+
   const images = Array.from(container.querySelectorAll("img"));
+  const footer = document.querySelector(".footer");
+
+  // Prevent scroll / height jump during load
+  document.body.classList.add("loading");
 
   function layout() {
     const containerWidth = Math.min(container.clientWidth, 2400);
 
-    let columns = 3;
-    if (window.innerWidth <= 768) columns = 2;
+    let columns = 3; // desktop
+    if (window.innerWidth <= 768) columns = 2; // mobile
 
     const columnHeights = Array(columns).fill(0);
-    const columnWidth = (containerWidth - (columns - 1) * columnGap) / columns;
+    const columnWidth =
+      (containerWidth - (columns - 1) * columnGap) / columns;
 
     images.forEach(img => {
       img.style.width = `${columnWidth}px`;
@@ -289,13 +296,21 @@ function initMasonry(containerSelector, columnGap = 16) {
       columnHeights[minCol] += imgHeight + columnGap;
     });
 
+    // Lock container height to correct value
     container.style.height = `${Math.max(...columnHeights)}px`;
+    container.style.minHeight = "unset";
 
-    // ✅ Reveal only when done
+    // Reveal masonry + footer
     container.classList.add("is-ready");
+    if (footer) footer.classList.add("is-visible");
+
+    // Unlock scroll
+    document.body.classList.remove("loading");
   }
 
+  // Wait for all images to load
   let loadedCount = 0;
+
   images.forEach(img => {
     if (img.complete) {
       loadedCount++;
@@ -307,8 +322,10 @@ function initMasonry(containerSelector, columnGap = 16) {
     }
   });
 
+  // All images were cached
   if (loadedCount === images.length) layout();
 
+  // Re-layout on resize
   window.addEventListener("resize", layout);
 }
 

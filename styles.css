@@ -16,6 +16,11 @@ body {
   background-color: black;
   overflow-x: hidden;
 }
+
+body.loading {
+  overflow: hidden;
+}
+
 .unselectable-text p {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari, Chrome, Opera */
@@ -42,7 +47,9 @@ body {
   margin: 0 auto;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.8s ease;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .masonry.is-ready {
@@ -278,7 +285,16 @@ body.scroll-locked {
   width: 100%;
   text-align: center;
   height: 55px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease;
 }
+
+.footer.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
 .footer p {
     color: #FE6363;
     font-size: 0.6rem;
