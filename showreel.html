@@ -1,59 +1,84 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <title>Showreel - Jonas Buerskog</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showreel | Jonas Buerskog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=League+Gothic&family=Quicksand:wght@300&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="nav.css">
+</head>
 <body>
 
-<!-- Sidebar/menu -->
-<input type="checkbox" id="myNav" style="display: none;">
-<nav class="sidebar">
-  <h2 class="sidebar-logo mobile-hide">JONAS<br>BRSKG</h2><br>
-  <div class="sidebar-nav">
-  <a tabindex="2" href="index" class="a">home</a><br>
-  <a tabindex="2" href="showreel" class="aactive">showreel</a><br>
-  <!-- <input type="checkbox" id="myWork" style="display: none">
-  <label for="myWork">
-  <span tabindex="3" class="a">featured_work</span>
-  </label>
-  <span class="sidebar-tray-icon">+</span><br>
-    <a tabindex="4" href="work1.html" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-    <a tabindex="5" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-    <a tabindex="6" class="a sidebar-tray">Hello World</a><br class="sidebar-tray">
-<a tabindex="7" href="about.html" class="a">about</a><br> -->
-  <a tabindex="8" href="about" class="a">about</a><br>
-  <a tabindex="8" href="contact" class="a">contact</a><br>
-  </div>
-  <div class="sidebarSubheader centreX">
-    <p>all photos are subject to copyright © 2025
-Jonas Buerskog. all rights reserved.</p>
-  </div>
-</nav>
+<div id="page">
 
-<!-- Topnavbar for smaller devices -->
-<header class="topbar">
-  <div class="topnav-l">
-    <div class="centreY">
-      <p><b>JONAS</p>
-      <p>BRSKG</b></p>
+<!--
+  NAVIGATION
+-->
+<header class="navbar">
+  <a href="https://brskg.com" class="logo">JONAS BUERSKOG</a>
+
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="https://brskg.com" onclick="closeMenu()">PORTFOLIO</a>
+    <a href="https://brskg.com/showreel" onclick="closeMenu()">SHOWREEL</a>
+
+    <div class="dropdown">
+      <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+        WORK <span class="dropdown-arrow">+</span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="https://brskg.com/fashion" onclick="closeMenu()">FASHION</a>
+        <a href="https://brskg.com/product" onclick="closeMenu()">PRODUCT</a>
+        <a href="https://brskg.com/events" onclick="closeMenu()">EVENT</a>
+      </div>
     </div>
-  </div>
-  <div class="topnav-r">
-    <label tabindex="1" class="centreY" for="myNav">&#9776;</label>
-  </div>
+
+    <a href="https://brskg.com/bio" onclick="closeMenu()">CONTACT</a>
+  </nav>
 </header>
 
-<!-- Page contents -->
-  <div class="main">
-    <div>
-    <iframe class="mainVideo centreX" src="https://www.youtube-nocookie.com/embed/YTO5ZdAZ_FQ?si=iVisqUFDx7Ix9Geu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- SHOWREEL SECTION -->
+<main class="showreel">
+  <div class="video-container">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/YTO5ZdAZ_FQ"
+      title="Jonas Buerskog Showreel"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
   </div>
-  </div>
+  <p class="video-caption"></p>
+</main>
 
+<!--
+  Fullscreen Viewer
+-->
+<div id="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-prev">&#10094;</button>
+
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+
+  <button class="lightbox-next">&#10095;</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
