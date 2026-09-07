@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Jonas Buerskog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=League+Gothic&family=Quicksand:wght@300&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<div id="page">
+
+<!--
+  NAVIGATION
+-->
+<header class="navbar">
+  <a href="https://brskg.com" class="logo">JONAS BUERSKOG</a>
+
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="https://brskg.com" onclick="closeMenu()">PORTFOLIO</a>
+    <a href="https://brskg.com/showreel" onclick="closeMenu()">SHOWREEL</a>
+
+    <div class="dropdown">
+      <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+        WORK <span class="dropdown-arrow">+</span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="https://brskg.com/fashion" onclick="closeMenu()">FASHION</a>
+        <a href="https://brskg.com/product" onclick="closeMenu()">PRODUCT</a>
+        <a href="https://brskg.com/bts" onclick="closeMenu()">BTS</a>
+        <!--<a href="https://brskg.com/events" onclick="closeMenu()">EVENT</a>-->
+      </div>
+    </div>
+
+    <a href="https://brskg.com/bio" onclick="closeMenu()">CONTACT</a>
+  </nav>
+</header>
+
+<!--
+  GALLARY
+-->
+<main class="gallery">
+  <div class="masonry">
+    <img src="images/GOTS/GOTS_1_DSCF0066.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0027.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0102.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0044.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0054.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0059.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0103.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0110.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0124.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0237.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0241.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0253.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0265.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0281.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0314.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0340.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0345.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0366.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0372.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/GOTS/GOTS_1_DSCF0373.jpg" loading="lazy" oncontextmenu="return false;">
+
+
+    <img src="images/WL_1.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_2.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_3.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_4.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_5.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_6.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_7.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_8.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_9.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_10.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_11.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_12.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_13.jpg" loading="lazy" oncontextmenu="return false;">
+    <img src="images/WL_14.jpg" loading="lazy" oncontextmenu="return false;">
+  </div>
+</main>
+
+  <div class="footer">
+    <p class="unselectable-text">Jonas Buerskog © 2026 All rights reserved</p>
+    <p class="unselectable-text">Jonas@brskg.com</p>
+  </div>
+
+<!--
+  Fullscreen Viewer
+-->
+<div id="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-prev">&#10094;</button>
+
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="" oncontextmenu="return false;">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+
+  <button class="lightbox-next">&#10095;</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
